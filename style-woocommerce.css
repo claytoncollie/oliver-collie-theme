@@ -601,7 +601,7 @@
 .woocommerce-error,
 .woocommerce-info,
 .woocommerce-message {
-	background-color: #f1f1f1;
+	background-color: #fff;
 	border-top-color: #16d992;
 }
 

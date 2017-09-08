@@ -21,7 +21,7 @@ require_once( get_stylesheet_directory() . '/lib/functions-woocommerce.php' );
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Oliver Collie' );
 define( 'CHILD_THEME_URL', 'http://www.olivercollie.com' );
-define( 'CHILD_THEME_VERSION', '1.3.65' );
+define( 'CHILD_THEME_VERSION', '1.3.71' );
 define( 'CHILD_THEME_DOMAIN', 'olivercollie' );
 
 //* Enqueue scripts and styles
@@ -77,6 +77,7 @@ add_theme_support( 'custom-header', array(
 //* Add Image Sizes
 add_image_size( 'olivercollie_archive', 800, 525, TRUE );
 add_image_size( 'olivercollie_wide', 1600, 350, TRUE );
+add_image_size( 'olivercollie_large', 1600, 700, TRUE );
 add_image_size( 'portfolio', 800, 600, TRUE );
 add_image_size( 'masonry', 400, 0, FALSE );
 
@@ -84,6 +85,7 @@ add_image_size( 'masonry', 400, 0, FALSE );
 add_filter( 'image_size_names_choose', 'olivercollie_image_size_names', 11, 1 );
 function olivercollie_image_size_names( $sizes ) {
     $sizes['olivercollie_wide'] = _( 'Wide' );
+    $sizes['olivercollie_wide'] = _( 'Very Large' );
     return $sizes;
 }
 

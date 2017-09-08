@@ -21,7 +21,15 @@ function olivercollie_add_body_class( $classes ) {
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 // Remove newsletter
-remove_action('genesis_before_footer', 'olivercollie_newsletter_signup', 8);
+add_action('genesis_meta', 'oc_toggle_before_footer');
+function oc_toggle_before_footer() {
+	if( get_field('oc_toggle_before_footer') ) {
+		return;
+	}else{
+		remove_action('genesis_before_footer', 'olivercollie_newsletter_signup', 8);
+	}
+}
+
 
 // Remove default loop
 remove_action( 'genesis_loop', 'genesis_do_loop' );
@@ -60,12 +68,24 @@ function oc_quick_links() {
 	}
 }
 
-add_action( 'genesis_after_header', 'oc_flexible_content_layout' );
+add_action( 'genesis_loop', 'oc_flexible_content_layout' );
 function oc_flexible_content_layout() {
 	if( have_rows('oc_flexible_content') ):
 	    while ( have_rows('oc_flexible_content') ) : the_row();
 
-	        if( get_row_layout() == 'oc_flex_full_width_content' ):
+	        if( get_row_layout() == 'oc_flex_full_width_title' ):
+
+	        	$full_wdith_title = get_sub_field('oc_flex_full_width_title_wysiwyg');
+
+	        	if( $full_wdith_title ) {
+	        		printf('<div class="flex-row full-width-title">%s</div>',
+	        			wp_kses_post($full_wdith_title)
+	        		);
+	        	}
+
+	       	endif;
+
+	       	if( get_row_layout() == 'oc_flex_full_width_content' ):
 
 	        	$full_wdith_content = get_sub_field('oc_flex_full_width_content_wysiwyg');
 
@@ -124,6 +144,18 @@ function oc_flexible_content_layout() {
 	        	if( $full_width_image ) {
 	        		printf('<div class="flex-row full-width-image">%s</div>',
 	        			wp_get_attachment_image( $full_width_image, 'olivercollie_wide' )
+	        		);
+	        	}
+
+	        endif;
+
+	        if( get_row_layout() == 'oc_flex_full_width_large_image' ): 
+
+	        	$full_width_large_image = get_sub_field('oc_flex_full_width_large_image_field');
+
+	        	if( $full_width_large_image ) {
+	        		printf('<div class="flex-row full-width-image">%s</div>',
+	        			wp_get_attachment_image( $full_width_large_image, 'olivercollie_large' )
 	        		);
 	        	}
 

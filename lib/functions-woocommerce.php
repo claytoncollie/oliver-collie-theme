@@ -56,16 +56,16 @@ function olivercollie_woocommerce_menu_item_show_cart() {
 //add_filter('woocommerce_show_page_title','__return_false');
 
 // Remove post count
-//remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
 // Remove sorting select field
-//remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 
 //remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 
 // Remove SKU in single-product
-//add_filter( 'wc_product_sku_enabled', '__return_false' );
+add_filter( 'wc_product_sku_enabled', '__return_false' );
 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 25 );

@@ -2178,8 +2178,21 @@ p.comment-form-comment {
 	margin-bottom: 5%;
 }
 
+.flex .site-inner .wrap {
+	max-width: 1600px;
+	padding: 0;
+}
+
+.flex .full-width-title h1,
+.flex .full-width-title h2,  
+.flex .full-width-title h3, 
+.flex .full-width-title h4, 
+.flex .full-width-title h5 {
+	margin-bottom: 0;
+}
+
 .flex-row {
-	margin: 0 auto 7.5%;
+	margin: 0 auto 5%;
 }
 
 .flex-row.narrow-content {
@@ -2195,6 +2208,11 @@ p.comment-form-comment {
 
 .flex-row .entry {
 	padding: 4%;
+}
+
+.flex .before-newsletter {
+	margin-top: 0;
+	padding: 0 0 120px;
 }
 
 @media only screen and (max-width: 800px) {
