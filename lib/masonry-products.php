@@ -35,12 +35,28 @@ function olivercollie_masonry_product() {
 
     $price = get_post_meta( get_the_ID(), '_regular_price', true);
 
+    $terms = get_the_terms( get_the_ID(), 'product_cat');
+
+    if ( $terms && ! is_wp_error( $terms ) ) {
+ 
+        $classes = array();
+        $names = array();
+ 
+        foreach ( $terms as $term ) {
+            $classes[] = 'product_cat-'.$term->slug;
+            $names[] = $term->name;
+        }
+
+    }
+
     ?>
 
     <li class="masonry-item hovereffect">
+        <span class="sale-banner <?php echo implode(' ', $classes); ?>"><?php echo implode(' ', $names); ?></span>
         <a href="<?php the_permalink(); ?>" rel="bookmark">
             <?php if( has_post_thumbnail() ) {
-                the_post_thumbnail( 'masonry', 
+                the_post_thumbnail( 
+                    'masonry', 
                     array(
                         'class' => 'post-image', 
                         'alt' => get_the_title() 
