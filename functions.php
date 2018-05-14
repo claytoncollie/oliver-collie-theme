@@ -16,12 +16,12 @@ require_once( get_stylesheet_directory() . '/lib/masonry-products.php' );
 require_once( get_stylesheet_directory() . '/lib/functions-genesis.php' );
 
 //* WooCommerce Specific Functions
-require_once( get_stylesheet_directory() . '/lib/functions-woocommerce.php' );
+//require_once( get_stylesheet_directory() . '/lib/functions-woocommerce.php' );
 
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Oliver Collie' );
 define( 'CHILD_THEME_URL', 'http://www.olivercollie.com' );
-define( 'CHILD_THEME_VERSION', '1.3.71' );
+define( 'CHILD_THEME_VERSION', '1.3.72' );
 define( 'CHILD_THEME_DOMAIN', 'olivercollie' );
 
 //* Enqueue scripts and styles
@@ -204,17 +204,17 @@ genesis_register_sidebar( array(
 /* ==========================================================================
  * Plugin Filters
  * ========================================================================== */
-add_filter( 'wwlc_filter_registration_form_login_control', '__return_false' );
-add_filter( 'wwlc_filter_registration_form_lost_password_control', '__return_false' );
+//add_filter( 'wwlc_filter_registration_form_login_control', '__return_false' );
+//add_filter( 'wwlc_filter_registration_form_lost_password_control', '__return_false' );
 
-add_filter( 'woocommerce_return_to_shop_redirect', 'oc_return_to_shop_redirect' );
+//add_filter( 'woocommerce_return_to_shop_redirect', 'oc_return_to_shop_redirect' );
 function oc_return_to_shop_redirect(){
     if( is_user_logged_in() && current_user_can('wholesale_customer' ) ){
 		return site_url( '/wholesale-ordering/', 'https' );
     }
 }
 
-add_action( 'template_redirect', 'oc_redirect_wholesale_customer' );
+//add_action( 'template_redirect', 'oc_redirect_wholesale_customer' );
 function oc_redirect_wholesale_customer() {
 	if( ( is_page('wholesale') || is_page('wholesale-login') ) && is_user_logged_in() && current_user_can('wholesale_customer' ) ) {
 		wp_redirect( site_url( '/wholesale-ordering/', 'https' ) );
